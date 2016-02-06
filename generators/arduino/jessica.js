@@ -72,6 +72,29 @@ Blockly.Language.pulse_in = {
     }
 };
 
+Blockly.Language.pulse_in2 = {
+    category: 'Jessica',
+    helpUrl: 'https://sites.google.com/site/4helectronics/',
+    init: function() {
+        this.setColour(1);
+        this.appendDummyInput("")
+            .appendTitle("pulseIn");
+        this.appendDummyInput("")
+            .appendTitle("pin")
+            .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+        this.appendDummyInput("")
+            .appendTitle("pulse type")
+            .appendTitle(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), 'BOOL');
+        this.appendValueInput("SECONDS", Number)
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendTitle("microseconds");
+        this.setInputsInline(true);
+        this.setOutput(true);
+        this.setTooltip('Will determine # of microseconds for a pulse up or down on the specified pin');
+    }
+};
+
 Blockly.Language.lcd_setup = {
     category: 'Jessica LCD',
     helpUrl: 'https://sites.google.com/site/4helectronics/',
@@ -353,6 +376,19 @@ Blockly.Arduino.pulse_in = function () {
     var type = this.getTitleValue('BOOL');
 
     var code = 'pulseIn(' + pin + ', ' + type + ')';
+
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.pulse_in2 = function () {
+    // Definitions
+    // Setups
+    // Code
+    var pin = this.getTitleValue('PIN');
+    var type = this.getTitleValue('BOOL');
+    var microseconds = Blockly.Arduino.valueToCode(this, 'SECONDS', Blockly.Arduino.ORDER_ATOMIC);
+
+    var code = 'pulseIn(' + pin + ', ' + type + ', ' + microseconds + ')';
 
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
