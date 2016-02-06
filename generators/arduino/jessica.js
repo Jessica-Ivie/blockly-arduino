@@ -95,6 +95,28 @@ Blockly.Language.pulse_in2 = {
     }
 };
 
+Blockly.Language.tone = {
+    category: 'Jessica',
+    helpUrl: 'https://sites.google.com/site/4helectronics/',
+    init: function() {
+        this.setColour(225);
+        this.appendDummyInput("")
+            .appendTitle("tone");
+        this.appendDummyInput("")
+            .appendTitle("pin")
+            .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+        this.appendValueInput("FREQUENCY", Number)
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendTitle("frequency");
+        this.setInputsInline(true);
+        this.setOutput(false);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip('Will determine # of microseconds for a pulse up or down on the specified pin');
+    }
+};
+
 Blockly.Language.lcd_setup = {
     category: 'Jessica LCD',
     helpUrl: 'https://sites.google.com/site/4helectronics/',
@@ -391,6 +413,16 @@ Blockly.Arduino.pulse_in2 = function () {
     var code = 'pulseIn(' + pin + ', ' + type + ', ' + microseconds + ')';
 
     return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.tone = function () {
+    // Definitions
+    // Setups
+    // Code
+    var pin = this.getTitleValue('PIN');
+    var frequency = Blockly.Arduino.valueToCode(this, 'FREQUENCY', Blockly.Arduino.ORDER_ATOMIC);
+
+    return 'tone(' + pin + ', ' + frequency + ');\n';
 };
 
 Blockly.Arduino.lcd_setup = function () {
