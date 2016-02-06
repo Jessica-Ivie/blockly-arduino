@@ -143,6 +143,26 @@ Blockly.Language.tone2 = {
     }
 };
 
+Blockly.Language.no_tone = {
+    category: 'Jessica',
+    helpUrl: 'http://arduino.cc/en/Reference/LiquidCrystalClear',
+    init: function () {
+        this.setColour(225);
+        this.appendDummyInput("")
+            .appendTitle("no tone");
+        this.appendDummyInput("")
+            .appendTitle("pin")
+            .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+        this.setInputsInline(true);
+        this.setOutput(false);
+        this.setTooltip('Stops tone playing.');
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+    }
+};
+
+
+
 Blockly.Language.lcd_setup = {
     category: 'Jessica LCD',
     helpUrl: 'https://sites.google.com/site/4helectronics/',
@@ -222,7 +242,9 @@ Blockly.Language.lcd_clear = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
     }
-};Blockly.Language.lcd_blink = {
+};
+
+Blockly.Language.lcd_blink = {
     category: 'Jessica LCD',
     helpUrl: 'http://arduino.cc/en/Reference/LiquidCrystalClear',
     init: function () {
@@ -459,6 +481,14 @@ Blockly.Arduino.tone2 = function () {
     var frequency = Blockly.Arduino.valueToCode(this, 'FREQUENCY', Blockly.Arduino.ORDER_ATOMIC);
     var duration = Blockly.Arduino.valueToCode(this, 'DURATION', Blockly.Arduino.ORDER_ATOMIC);
     return 'tone(' + pin + ', ' + frequency + ', ' + duration + ');\n';
+};
+
+Blockly.Arduino.no_tone = function () {
+    // Definitions
+    // Setups
+    // Code
+    var pin = this.getTitleValue('PIN');
+    return 'noTone(' + pin + ');\n';
 };
 
 Blockly.Arduino.lcd_setup = function () {
