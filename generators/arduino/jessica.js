@@ -65,7 +65,7 @@ Blockly.Language.pulse_in = {
             .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
         this.appendDummyInput("")
             .appendTitle("pulse type")
-            .appendTitle(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), 'BOOL')
+            .appendTitle(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), 'BOOL');
         this.setInputsInline(true);
         this.setOutput(true);
         this.setTooltip('Will determine # of microseconds for a pulse up or down on the specified pin');
@@ -432,23 +432,24 @@ Blockly.Arduino.lcd_display = function () {
     //Pad the strings based on the selected alignment
     var spaces_line_1;
     var spaces_line_2;
+    var i;
     switch (parseInt(lcd_alignment)) {
         case 1:   //Left - Do Nothing
             break;
         case 2:  //Centered - Find the blank spaces, and pad with half.
             spaces_line_1 = (lcd_width - lcd_line_1.length + 4) / 2;
-            for (var i = 0; i < spaces_line_1; i++)
+            for ( i = 0; i < spaces_line_1; i++)
                 lcd_line_1 = lcd_line_1.substr(0, 2) + " " + lcd_line_1.substr(2);
             spaces_line_2 = (lcd_width - lcd_line_2.length + 4) / 2;
-            for (var i = 0; i < spaces_line_2; i++)
+            for ( i = 0; i < spaces_line_2; i++)
                 lcd_line_2 = lcd_line_2.substr(0, 2) + " " + lcd_line_2.substr(2);
             break;
         case 3:  //Right - Find the blank spaces, and pad with all of them.
             spaces_line_1 = (lcd_width - lcd_line_1.length + 4);
-            for (var i = 0; i < spaces_line_1; i++)
+            for ( i = 0; i < spaces_line_1; i++)
                 lcd_line_1 = lcd_line_1.substr(0, 2) + " " + lcd_line_1.substr(2);
             spaces_line_2 = (lcd_width - lcd_line_2.length + 4);
-            for (var i = 0; i < spaces_line_2; i++)
+            for ( i = 0; i < spaces_line_2; i++)
                 lcd_line_2 = lcd_line_2.substr(0, 2) + " " + lcd_line_2.substr(2);
             break;
         default:  //Left
