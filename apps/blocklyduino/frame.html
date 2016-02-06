@@ -24,7 +24,7 @@
   <script type="text/javascript" src="../../generators/arduino/grove.js"></script>
   <!-- custom block -->
   <!--<script type="text/javascript" src="../../generators/arduino/custom.js"></script>-->
-  <!--Jessica's block-->
+  <!--Jessica's blocks-->
   <script type="text/javascript" src="../../generators/arduino/jessica.js"></script>
 
   <style>
@@ -67,7 +67,8 @@
           //'grove_bluetooth_slave',
           //control
           'base_delay', 'controls_if', 'controls_if_if', 'controls_if_elseif', 'controls_if_else', 'controls_for',
-          //'controls_whileUntil', 'controls_flow_statements',
+          'controls_whileUntil',
+          // 'controls_flow_statements',
           //math
           'base_map','math_number','math_arithmetic',//'math_modulo',
           //text
@@ -84,7 +85,8 @@
           // Jessica's blocks
           'random_number', 'millis', 'micros', 'pulse_in', 'pulse_in2','tone', 'no_tone', 'tone2', 'lcd_setup', 'lcd_print', 'lcd_clear', 'lcd_display', 'lcd_home','lcd_blink', 'lcd_write' , 'lcd_custom_character'
           ];
-      for (var x = 0; x < keepers.length; x++) {
+
+        for (var x = 0; x < keepers.length; x++) {
         newLanguage[keepers[x]] = Blockly.Language[keepers[x]];
       }
       // Fold control category into logic category.

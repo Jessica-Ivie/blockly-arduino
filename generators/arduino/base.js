@@ -112,7 +112,7 @@ Blockly.Language.inout_analog_write = {
     this.setColour(230);
     this.appendDummyInput("")
         .appendTitle("AnalogWrite PIN#")
-        .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
+        .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
     this.appendValueInput("NUM", Number)
         .appendTitle("value")
         .setCheck(Number);
@@ -248,9 +248,9 @@ Blockly.Arduino.inout_digital_read = function() {
 
 Blockly.Arduino.inout_analog_write = function() {
   var dropdown_pin = this.getTitleValue('PIN');
-  //var dropdown_stat = this.getTitleValue('STAT');
+  var dropdown_stat = this.getTitleValue('STAT');
   var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
-  //Blockly.Arduino.setups_['setup_output'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
+  Blockly.Arduino.setups_['setup_output'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
   var code = 'analogWrite('+dropdown_pin+','+value_num+');\n';
   return code;
 };

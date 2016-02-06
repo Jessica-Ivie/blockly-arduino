@@ -30,7 +30,7 @@ Blockly.Language.custom_write = {
 	this.appendDummyInput("")
 	    .appendTitle("CustomWrite PIN#")
 	    .appendTitle(new Blockly.FieldImage("http://www.seeedstudio.com/wiki/images/thumb/e/e0/LED1.jpg/400px-LED1.jpg", 64, 64))
-	    .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN")
+	    .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN")
 	    .appendTitle("value");
 	this.appendValueInput("NUM", Number);
 	this.setInputsInline(true);

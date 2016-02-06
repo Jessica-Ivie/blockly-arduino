@@ -406,6 +406,8 @@ Blockly.Language.lcd_custom_character = {
         this.setNextStatement(true, null);
     }
 };
+
+
 //*********************************************************************************************************************
 // define generators
 
