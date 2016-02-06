@@ -113,7 +113,33 @@ Blockly.Language.tone = {
         this.setOutput(false);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setTooltip('Will determine # of microseconds for a pulse up or down on the specified pin');
+        this.setTooltip('Will continuously play specified tone on specified pin\'s output');
+    }
+};
+
+Blockly.Language.tone2 = {
+    category: 'Jessica',
+    helpUrl: 'https://sites.google.com/site/4helectronics/',
+    init: function() {
+        this.setColour(225);
+        this.appendDummyInput("")
+            .appendTitle("tone");
+        this.appendDummyInput("")
+            .appendTitle("pin")
+            .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+        this.appendValueInput("FREQUENCY", Number)
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendTitle("frequency");
+        this.appendValueInput("DURATION", Number)
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendTitle("duration mS");
+        this.setInputsInline(true);
+        this.setOutput(false);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip('Will  play specified tone on specified pin\'s output for given amount of time in milliseconds');
     }
 };
 
@@ -423,6 +449,16 @@ Blockly.Arduino.tone = function () {
     var frequency = Blockly.Arduino.valueToCode(this, 'FREQUENCY', Blockly.Arduino.ORDER_ATOMIC);
 
     return 'tone(' + pin + ', ' + frequency + ');\n';
+};
+
+Blockly.Arduino.tone2 = function () {
+    // Definitions
+    // Setups
+    // Code
+    var pin = this.getTitleValue('PIN');
+    var frequency = Blockly.Arduino.valueToCode(this, 'FREQUENCY', Blockly.Arduino.ORDER_ATOMIC);
+    var duration = Blockly.Arduino.valueToCode(this, 'DURATION', Blockly.Arduino.ORDER_ATOMIC);
+    return 'tone(' + pin + ', ' + frequency + ', ' + duration + ');\n';
 };
 
 Blockly.Arduino.lcd_setup = function () {
