@@ -444,7 +444,7 @@ Blockly.Arduino.lcd_display = function () {
             for ( i = 0; i < spaces_line_2; i++)
                 lcd_line_2 = lcd_line_2.substr(0, 2) + " " + lcd_line_2.substr(2);
             break;
-        case 3:  //Right - Find the blank spaces, and pad with all of them.
+        case 3:  //Right - Find the blank spaces,  and pad with all of them.
             spaces_line_1 = (lcd_width - lcd_line_1.length + 4);
             for ( i = 0; i < spaces_line_1; i++)
                 lcd_line_1 = lcd_line_1.substr(0, 2) + " " + lcd_line_1.substr(2);
