@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Jessica Arduino Block Code</title>
+  <title>Melissa's Arduino Blockly Code</title>
   <script type="text/javascript" src="../blockly_compressed.js"></script>
   <script type="text/javascript" src="../../generators/arduino.js"></script>
   <script type="text/javascript" src="../../generators/arduino/control.js"></script>
@@ -44,9 +44,12 @@
       // Whitelist of blocks to keep.
       var newLanguage = {};
       var keepers = [
+          // ITLS
+          'forever_loop',
+          'inout_digital_write',
           //io
           'inout_highlow',
-          'inout_digital_write', 'inout_digital_read',
+           'inout_digital_read',
           'inout_analog_write', 'inout_analog_read',
           'serial_print', 'inout_buildin_led',
           //servo

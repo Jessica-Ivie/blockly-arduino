@@ -10,6 +10,19 @@ if (!Blockly.Language) Blockly.Language = {};
 
 var lcd_width = 16;
 
+Blockly.Language.forever_loop = {
+    category: 'ITLS',
+    helpUrl: 'https://sites.google.com/site/4helectronics/',
+    init: function () {
+        this.setColour(260);
+        this.appendDummyInput("")
+            .appendTitle("Forever Loop");
+        this.appendStatementInput("CODE");
+        this.setTooltip('This loop will be repeated an infinite number of times.');
+    }
+};
+
+
 Blockly.Language.random_number = {
     category: 'Jessica',
     helpUrl: 'https://sites.google.com/site/4helectronics/',
@@ -410,6 +423,17 @@ Blockly.Language.lcd_custom_character = {
 
 //*********************************************************************************************************************
 // define generators
+
+Blockly.Arduino.forever_loop = function () {
+    var code = Blockly.Arduino.statementToCode(this, 'CODE');
+
+    if (Blockly.Arduino.INFINITE_LOOP_TRAP) {
+        code = Blockly.Arduino.INFINITE_LOOP_TRAP.replace(/%1/g,
+                '\'' + this.id + '\'') + code;
+    }
+    code = Blockly.Arduino.scrub_(this, code);
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
 
 Blockly.Arduino.random_number = function () {
     var smallest_number = Blockly.Arduino.valueToCode(this, 'SMALLEST_NUMBER', Blockly.Arduino.ORDER_ATOMIC);

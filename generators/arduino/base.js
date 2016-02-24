@@ -28,8 +28,24 @@
 //define blocks
 if (!Blockly.Language) Blockly.Language = {};
 
+Blockly.Language.inout_digital_write = {
+  category: 'ITLS',
+  helpUrl: 'http://arduino.cc/en/Reference/DigitalWrite',
+  init: function() {
+    this.setColour(230);
+    this.appendDummyInput("")
+        .appendTitle("DigitalWrite PIN#")
+        .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+        .appendTitle("Stat")
+        .appendTitle(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), "STAT");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('Write digital value to a specific Port');
+  }
+};
+
 Blockly.Language.base_delay = {
-  category: 'Control',
+  category: 'ITLS',
   helpUrl: 'http://arduino.cc/en/Reference/delay',
   init: function() {
     this.setColour(120);
@@ -68,7 +84,7 @@ Blockly.Language.inout_buildin_led = {
    init: function() {
      this.setColour(190);
      this.appendDummyInput("")
-	       .appendTitle("Build-in LED Stat")
+	       .appendTitle("Built-in LED Stat")
 	       .appendTitle(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), "STAT");
      this.setPreviousStatement(true, null);
      this.setNextStatement(true, null);
@@ -76,21 +92,7 @@ Blockly.Language.inout_buildin_led = {
    }
 };
 
-Blockly.Language.inout_digital_write = {
-  category: 'In/Out',
-  helpUrl: 'http://arduino.cc/en/Reference/DigitalWrite',
-  init: function() {
-    this.setColour(230);
-    this.appendDummyInput("")
-	      .appendTitle("DigitalWrite PIN#")
-	      .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN")
-      	.appendTitle("Stat")
-      	.appendTitle(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), "STAT");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip('Write digital value to a specific Port');
-  }
-};
+
 
 Blockly.Language.inout_digital_read = {
   category: 'In/Out',
