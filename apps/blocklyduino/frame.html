@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Blockly Code</title>
+  <title>Block Code</title>
   <script type="text/javascript" src="../blockly_compressed.js"></script>
   <script type="text/javascript" src="../../generators/arduino.js"></script>
   <script type="text/javascript" src="../../generators/arduino/control.js"></script>
@@ -24,7 +24,7 @@
   <script type="text/javascript" src="../../generators/arduino/grove.js"></script>
   <!-- custom block -->
   <!--<script type="text/javascript" src="../../generators/arduino/custom.js"></script>-->
-  <!--Jessica's block-->
+  <!--Jessica's blocks-->
   <script type="text/javascript" src="../../generators/arduino/jessica.js"></script>
   <script type="text/javascript" src="../../generators/arduino/cass.js"></script>
 
@@ -43,7 +43,7 @@
   <script>
     function init() {
       // Whitelist of blocks to keep.
-      var newLanguage = {}
+      var newLanguage = {};
       var keepers = [
           //io
           'inout_highlow',
@@ -68,7 +68,8 @@
           //'grove_bluetooth_slave',
           //control
           'base_delay', 'controls_if', 'controls_if_if', 'controls_if_elseif', 'controls_if_else', 'controls_for',
-          //'controls_whileUntil', 'controls_flow_statements',
+          'controls_whileUntil',
+          // 'controls_flow_statements',
           //math
           'base_map','math_number','math_arithmetic',//'math_modulo',
           //text
@@ -83,11 +84,13 @@
           //custom
           //'custom_read','custom_write',
           // Jessica's blocks
-          'random_number', 'millis', 'micros', 'lcd_setup', 'lcd_print', 'lcd_display', 'lcd_custom_character',
+          'random_number', 'millis', 'micros', 'pulse_in', 'pulse_in2','tone', 'no_tone', 'tone2', 'lcd_setup', 'lcd_print', 'lcd_clear', 'lcd_display', 'lcd_home','lcd_blink', 'lcd_write' , 'lcd_custom_character',
           // Cass's blocks
           'delay_microseconds', 'matrix_setup'
-          ];
-      for (var x = 0; x < keepers.length; x++) {
+
+      ];
+
+        for (var x = 0; x < keepers.length; x++) {
         newLanguage[keepers[x]] = Blockly.Language[keepers[x]];
       }
       // Fold control category into logic category.
