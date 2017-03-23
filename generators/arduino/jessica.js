@@ -53,6 +53,116 @@ Blockly.Language.micros = {
     }
 };
 
+Blockly.Language.pulse_in = {
+    category: 'Jessica',
+    helpUrl: 'https://sites.google.com/site/4helectronics/',
+    init: function() {
+        this.setColour(1);
+        this.appendDummyInput("")
+            .appendTitle("pulseIn");
+        this.appendDummyInput("")
+            .appendTitle("pin")
+            .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+        this.appendDummyInput("")
+            .appendTitle("pulse type")
+            .appendTitle(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), 'BOOL');
+        this.setInputsInline(true);
+        this.setOutput(true);
+        this.setTooltip('Will determine # of microseconds for a pulse up or down on the specified pin');
+    }
+};
+
+Blockly.Language.pulse_in2 = {
+    category: 'Jessica',
+    helpUrl: 'https://sites.google.com/site/4helectronics/',
+    init: function() {
+        this.setColour(1);
+        this.appendDummyInput("")
+            .appendTitle("pulseIn");
+        this.appendDummyInput("")
+            .appendTitle("pin")
+            .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+        this.appendDummyInput("")
+            .appendTitle("pulse type")
+            .appendTitle(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), 'BOOL');
+        this.appendValueInput("SECONDS", Number)
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendTitle("microseconds");
+        this.setInputsInline(true);
+        this.setOutput(true);
+        this.setTooltip('Will determine # of microseconds for a pulse up or down on the specified pin');
+    }
+};
+
+Blockly.Language.tone = {
+    category: 'Jessica',
+    helpUrl: 'https://sites.google.com/site/4helectronics/',
+    init: function() {
+        this.setColour(225);
+        this.appendDummyInput("")
+            .appendTitle("tone");
+        this.appendDummyInput("")
+            .appendTitle("pin")
+            .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+        this.appendValueInput("FREQUENCY", Number)
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendTitle("frequency");
+        this.setInputsInline(true);
+        this.setOutput(false);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip('Will continuously play specified tone on specified pin\'s output');
+    }
+};
+
+Blockly.Language.tone2 = {
+    category: 'Jessica',
+    helpUrl: 'https://sites.google.com/site/4helectronics/',
+    init: function() {
+        this.setColour(225);
+        this.appendDummyInput("")
+            .appendTitle("tone");
+        this.appendDummyInput("")
+            .appendTitle("pin")
+            .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+        this.appendValueInput("FREQUENCY", Number)
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendTitle("frequency");
+        this.appendValueInput("DURATION", Number)
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendTitle("duration mS");
+        this.setInputsInline(true);
+        this.setOutput(false);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip('Will  play specified tone on specified pin\'s output for given amount of time in milliseconds');
+    }
+};
+
+Blockly.Language.no_tone = {
+    category: 'Jessica',
+    helpUrl: 'http://arduino.cc/en/Reference/LiquidCrystalClear',
+    init: function () {
+        this.setColour(225);
+        this.appendDummyInput("")
+            .appendTitle("no tone");
+        this.appendDummyInput("")
+            .appendTitle("pin")
+            .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+        this.setInputsInline(true);
+        this.setOutput(false);
+        this.setTooltip('Stops tone playing.');
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+    }
+};
+
+
+
 Blockly.Language.lcd_setup = {
     category: 'Jessica LCD',
     helpUrl: 'https://sites.google.com/site/4helectronics/',
@@ -98,14 +208,68 @@ Blockly.Language.lcd_print = {
         this.setColour(107);
         this.appendValueInput("LCD_PRINT_TEXT", String)
             .setCheck(String)
-            .appendTitle("LCD print");
+            .appendTitle("LCD Print");
         this.setOutput(false);
         this.setTooltip('This will display on the LCD screen at the current position the provided text.');
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
     }
 };
+Blockly.Language.lcd_write = {
+    category: 'Jessica LCD',
+    helpUrl: 'http://arduino.cc/en/Reference/LiquidCrystalWrite',
+    init: function () {
+        this.setColour(205);
+        this.appendValueInput("LCD_CHAR", String)
+            .setCheck(String)
+            .appendTitle("LCD Write");
+        this.setOutput(false);
+        this.setTooltip('Write a character to the LCD.');
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+    }
+};
 
+Blockly.Language.lcd_clear = {
+    category: 'Jessica LCD',
+    helpUrl: 'http://arduino.cc/en/Reference/LiquidCrystalClear',
+    init: function () {
+        this.setColour(133);
+        this.appendDummyInput("")
+            .appendTitle("LCD Clear");
+        this.setOutput(false);
+        this.setTooltip('Clears the LCD screen and positions the cursor in the upper-left corner.');
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+    }
+};
+
+Blockly.Language.lcd_blink = {
+    category: 'Jessica LCD',
+    helpUrl: 'http://arduino.cc/en/Reference/LiquidCrystalClear',
+    init: function () {
+        this.setColour(300);
+        this.appendDummyInput("")
+            .appendTitle("LCD Blink");
+        this.setOutput(false);
+        this.setTooltip('Display the blinking LCD cursor. If used in combination with the cursor() function, the result will depend on the particular display.');
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+    }
+
+};Blockly.Language.lcd_home = {
+    category: 'Jessica LCD',
+    helpUrl: 'http://arduino.cc/en/Reference/LiquidCrystalClear',
+    init: function () {
+        this.setColour(140);
+        this.appendDummyInput("")
+            .appendTitle("LCD Home");
+        this.setOutput(false);
+        this.setTooltip('Positions the cursor in the upper-left of the LCD. That is, use that location in outputting subsequent text to the display. To also clear the display, use the clear() function instead.');
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+    }
+};
 
 Blockly.Language.lcd_display = {
     category: 'Jessica LCD',
@@ -242,6 +406,8 @@ Blockly.Language.lcd_custom_character = {
         this.setNextStatement(true, null);
     }
 };
+
+
 //*********************************************************************************************************************
 // define generators
 
@@ -272,6 +438,59 @@ Blockly.Arduino.micros = function () {
     // Code
     var code = 'micros()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.pulse_in = function () {
+    // Definitions
+    // Setups
+    // Code
+    var pin = this.getTitleValue('PIN');
+    var type = this.getTitleValue('BOOL');
+
+    var code = 'pulseIn(' + pin + ', ' + type + ')';
+
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.pulse_in2 = function () {
+    // Definitions
+    // Setups
+    // Code
+    var pin = this.getTitleValue('PIN');
+    var type = this.getTitleValue('BOOL');
+    var microseconds = Blockly.Arduino.valueToCode(this, 'SECONDS', Blockly.Arduino.ORDER_ATOMIC);
+
+    var code = 'pulseIn(' + pin + ', ' + type + ', ' + microseconds + ')';
+
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.tone = function () {
+    // Definitions
+    // Setups
+    // Code
+    var pin = this.getTitleValue('PIN');
+    var frequency = Blockly.Arduino.valueToCode(this, 'FREQUENCY', Blockly.Arduino.ORDER_ATOMIC);
+
+    return 'tone(' + pin + ', ' + frequency + ');\n';
+};
+
+Blockly.Arduino.tone2 = function () {
+    // Definitions
+    // Setups
+    // Code
+    var pin = this.getTitleValue('PIN');
+    var frequency = Blockly.Arduino.valueToCode(this, 'FREQUENCY', Blockly.Arduino.ORDER_ATOMIC);
+    var duration = Blockly.Arduino.valueToCode(this, 'DURATION', Blockly.Arduino.ORDER_ATOMIC);
+    return 'tone(' + pin + ', ' + frequency + ', ' + duration + ');\n';
+};
+
+Blockly.Arduino.no_tone = function () {
+    // Definitions
+    // Setups
+    // Code
+    var pin = this.getTitleValue('PIN');
+    return 'noTone(' + pin + ');\n';
 };
 
 Blockly.Arduino.lcd_setup = function () {
@@ -311,6 +530,36 @@ Blockly.Arduino.lcd_print = function () {
     return 'lcd.print(' + lcd_print_text + ');\n';
 };
 
+Blockly.Arduino.lcd_write = function () {
+    var lcd_write_char = Blockly.Arduino.valueToCode(this, 'LCD_CHAR', Blockly.Arduino.ORDER_ATOMIC);
+
+    // Definitions
+    // Setups
+    // Code
+    return 'lcd.write(' + lcd_write_char + ');\n';
+};
+
+Blockly.Arduino.lcd_clear = function () {
+    // Definitions
+    // Setups
+    // Code
+    return 'lcd.clear();\n';
+};
+
+Blockly.Arduino.lcd_home = function () {
+    // Definitions
+    // Setups
+    // Code
+    return 'lcd.home();\n';
+};
+
+Blockly.Arduino.lcd_blink = function () {
+    // Definitions
+    // Setups
+    // Code
+    return 'lcd.blink();\n';
+
+};
 Blockly.Arduino.lcd_display = function () {
     var lcd_line_1 = Blockly.Arduino.valueToCode(this, 'LCD_LINE_1', Blockly.Arduino.ORDER_ATOMIC);
     var lcd_line_2 = Blockly.Arduino.valueToCode(this, 'LCD_LINE_2', Blockly.Arduino.ORDER_ATOMIC);
@@ -319,6 +568,7 @@ Blockly.Arduino.lcd_display = function () {
     //Pad the strings based on the selected alignment
     var spaces_line_1;
     var spaces_line_2;
+    var i;
     switch (parseInt(lcd_alignment)) {
         case 1:   //Left - Do Nothing
             break;
