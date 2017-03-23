@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Blockly Demo: Code</title>
+  <title>Blockly Code</title>
   <script type="text/javascript" src="../blockly_compressed.js"></script>
   <script type="text/javascript" src="../../generators/arduino.js"></script>
   <script type="text/javascript" src="../../generators/arduino/control.js"></script>
@@ -26,6 +26,7 @@
   <!--<script type="text/javascript" src="../../generators/arduino/custom.js"></script>-->
   <!--Jessica's block-->
   <script type="text/javascript" src="../../generators/arduino/jessica.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/cass.js"></script>
 
   <style>
     html, body {
@@ -82,7 +83,9 @@
           //custom
           //'custom_read','custom_write',
           // Jessica's blocks
-          'random_number', 'millis', 'micros', 'lcd_setup', 'lcd_print', 'lcd_display', 'lcd_custom_character'
+          'random_number', 'millis', 'micros', 'lcd_setup', 'lcd_print', 'lcd_display', 'lcd_custom_character',
+          // Cass's blocks
+          'delay_microseconds', 'matrix_setup'
           ];
       for (var x = 0; x < keepers.length; x++) {
         newLanguage[keepers[x]] = Blockly.Language[keepers[x]];
